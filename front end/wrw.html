@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практика</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 60vw;
+            height: 60vh;
+        }
+
+        td {
+            border: 1px solid rgb(115, 0, 255);
+            cursor: pointer;
+
+        }
+
+        .tab {
+            background-color: rgb(162, 0, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>2 Игра</h1>
+    <p></p>
+        <table id="table"></table>
+        <script>
+            let p = document.querySelector('p');
+		    let i = 15;
+		    let timerid = setInterval(function () {
+			p.textContent = --i;
+			if (i <= 0) {
+				clearInterval(timerid);
+				p.textContent = "Время вышло";
+			}
+		}, 1000)
+            let N = document.querySelector('#table');
+
+            +function createTable() {
+                let num = 0;
+                for (let i = 0; i < 10; i++) {
+                    let tr = document.createElement('tr');
+
+                    for (let i = 0; i < 10; i++) {
+                        let td = document.createElement('td');
+
+                        td.setAttribute('data-num', num);
+                        num++;
+                        tr.appendChild(td);
+                    }
+                    N.appendChild(tr);
+                }
+            }();
+
+            function getSet() {
+                let uniq = new Set();
+                while (uniq.size < 10) {
+                    uniq.add(Math.floor(Math.random() * 99));
+                };
+                return uniq;
+            }
+
+            const uniq = getSet();
+
+           N.addEventListener('click', (event) => {
+                let data = +event.target.getAttribute('data-num');
+
+                uniq.has(data) && event.target.classList.add('tab');
+            })
+
+        </script>
+</body>
+
+</html>

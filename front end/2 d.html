@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практика</title>
+    <style>
+        h1 {
+            text-align: center;
+            color:rgb(155, 68, 237);
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Игра в города</h1>
+    <input id="field">
+    <div id="message"></div>
+    <div class="goroda"></div>
+    <script>
+        let field = document.querySelector('#field');
+        let message = document.querySelector('#message');
+        let goroda = document.querySelector('.goroda');
+        let arrr = [];
+        let arrr2 = ['Astana', 'Karaganda', 'Almata', 'Eisk', 'Kizilorda', 'Orenburg', 'Moskva', 'Piter', 'Krasnodar', 'Parij', 'Shanhai', 'Minsk', 'London'];
+        arrr2.map(a => a.toLowerCase());
+        field.addEventListener('keydown', (e) => {
+            if (e.code == "Enter") {
+                checkEverything();
+                goroda.innerHTML = arrr.map(el => el[0].toUpperCase() + el.slice(1)).join(', ');
+                field.value = '';
+            }
+        })
+        function checkLetters(arr, str) {
+            let firstLetter = str.toLowerCase().trim().slice(0, 1);
+            let lastLetter = arr[arr.length - 1].slice(-1).toLowerCase();
+
+            if (firstLetter !== lastLetter) {
+                return false
+            };
+            return true;
+        }
+        function checkHasWord(arr, str) {
+
+            return arr.find(el => el.toLowerCase() == str.trim().toLowerCase());
+        }
+
+        function botStep(arr1, arr2) {
+
+            let lastLetter = arr2[arr2.length - 1].slice(-1).toLowerCase();
+
+            let wordsWithLastLetter = arr1.filter(el => el.toLowerCase().startsWith(lastLetter) && !arr2.includes(el.toLowerCase()));
+
+            if (wordsWithLastLetter.length === 0) {
+                message.innerHTML = 'Такого города не знаю';
+            } else {
+                arr2.push(wordsWithLastLetter.pop().toLowerCase());
+
+            }
+
+        }
+
+        function checkEverything() {
+            let word = field.value.toLowerCase();
+
+            if (checkHasWord(arrr2, word)) {
+
+
+                if (arrr.length === 0) {
+                    message.innerHTML = '';
+                    arrr.push(word.toLowerCase());
+                    botStep(arrr2, arrr);
+                } else {
+
+                    if (checkLetters(arrr, word) && !checkHasWord(arrr, word)) {
+                        arrr.push(word);
+                        botStep(arrr2, arrr);
+                    } else if (!checkLetters(arr, word)) {
+                        message.innerHTML = 'Слово начинается на последнюю букву';
+                    } else {
+                        message.innerHTML = 'Такой город уже есть';
+                    }
+
+                }
+
+
+
+            } else {
+                message.innerHTML = 'Такого города нет';
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

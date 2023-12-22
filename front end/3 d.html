@@ -1,0 +1,246 @@
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Практика</title>
+    <style>
+        h1{
+           text-align: center;
+        }
+        h2 {
+            text-align: center;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        #container{
+            display: flex;
+            margin-bottom: 15px;
+        }
+        #resultat {
+            text-align: right;
+            margin-right: 10px;
+        }
+        #boxx {
+            margin: 0 auto;
+            width: 500px;
+        }
+        #form input {
+            padding: 8px;
+            width: 24%;
+            margin: 0 0.5% 10px 0.5%;
+        }
+
+        #table {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        #table td,
+        #table th {
+            padding: 12px;
+            text-align: center;
+            border: 2px solid rgb(204, 0, 255);
+            color:rgb(45, 45, 85)
+        }
+
+        #table td.remove {
+            color: rgb(162, 0, 255);
+            cursor: pointer;
+            text-decoration: underline;
+        } 
+    </style>
+</head>
+
+<body>
+    <h1>2 Задание</h1>
+    <div id="boxx">
+        <div id="container">
+            <input id="naz" placeholder="Название">
+            <input id="zena" placeholder="Цена">
+            <input id="kol" placeholder="Количество">
+            <input id="dob" type="button" value="Добавить">
+        </div>
+
+        <h2>Таблица продуктов:</h2>
+        <table id="table">
+            <tr>
+                <th>Название</th>
+                <th>Цена</th>
+                <th>Количество</th>
+                <th>Сумма товара</th>
+                <th>Удалить</th>
+            </tr>
+        </table>
+        <div id="resultat">
+              Ваш итог: <span id="total">0</span>
+        </div>
+    </div>
+    <script>
+        let naz = document.querySelector('#naz');
+        let zena = document.querySelector('#zena');
+        let kol = document.querySelector('#kol');
+        let dob = document.querySelector('#dob');
+        let table = document.querySelector('#table');
+        let total = document.querySelector('#total');
+
+        dob.addEventListener('click', function () {
+            let tr = document.createElement('tr');
+
+            allowEdit(createCell(tr, naz.value, 'naz'));
+            allowEdit(createCell(tr, zena.value, 'zena'));
+            allowEdit(createCell(tr, kol.value, 'kol'));
+            createCell(tr, zena.value * kol.value, 'cost');
+            createCell(tr, 'удалить', 'remove').addEventListener('click', function () {
+                tr.remove();
+                recountTotal();
+            });
+
+            naz.value = '';
+            zena.value = '';
+            kol.value = '';
+            table.appendChild(tr);
+            recountTotal();
+
+        });
+
+
+        function createCell(tr, value, naz) {
+            let td;
+
+            td = document.createElement('td');
+            td.innerHTML = value;
+            td.classList.add(naz);
+            tr.appendChild(td);
+
+            return td;
+
+        }
+
+        function recountTotal() {
+            let costs = table.querySelectorAll('.cost');
+
+            if (costs) {
+               
+                let res = 0
+                for (let item of costs) {
+                    res += +item.innerHTML;
+                }
+                total.innerHTML = res;
+            }
+        }
+
+        function allowEdit(td) {
+            td.addEventListener('dblclick', function () {
+                let text = td.innerHTML
+                td.innerHTML = '';
+
+                let input = document.createElement('input');
+                input.value = text;
+                input.focus();
+                td.appendChild(input);
+
+                input.addEventListener('keydown', function (event) {
+                    if (event.key == 'Enter') {
+                        td.innerHTML = this.value;
+
+                        if (td.classList.contains('zena') || td.classList.contains('kol')) {
+
+                            counter();
+                            recountTotal();
+
+                        }
+                    }
+                });
+            });
+        }
+
+        function counter() {
+            let rows = document.querySelectorAll('#table tr');
+
+            for (row of rows) {
+                let tdInRow = row.querySelectorAll('td');
+            
+                for(let i = 0; i< tdInRow.length; i++){
+                   tdInRow[3].innerHTML = tdInRow[1].innerHTML * tdInRow[2].innerHTML;
+                }
+            }
+
+
+        }
+
+    </script>
+</body>
+
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практика</title>
+    <style>
+        input{
+            border-color: blueviolet;
+            border-radius: 8px;
+        }
+        button{
+            background-color: rgb(233, 211, 253);
+            border-radius: 8px;
+            border-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <h1>1 Задание</h1>
+    <input id="input" type="text">
+    <form action="3 d.html" method="get">
+    <ul id="spisok">
+        <!-- <li><button class="button">Удалить</button><input type="checkbox" id="ii" value="1">Выполнено </li> -->
+    </ul>
+    <p></p>
+       
+</form>
+    <!-- <input id="input" type="text">
+	<button id="button">Добавить в список дел</button>  
+	<p></p> <input type="checkbox" id="ii" value="1">Выполнено<button class="but">Удалить</button>
+    <script>
+        let input = document.querySelector('#input');
+        let button = document.querySelector('#button');
+        let but= document.querySelector('#but');
+        let p = document.querySelector('p');
+        button.addEventListener('click', function(){
+                  
+				   p.textContent += input.value ;
+			   }),
+             but.addEventListener('click', function(){
+                 p.innerHTML;
+              }); -->
+              <script>
+                let input = document.querySelector('#input');
+                let  spisok = document.querySelector('#spisok');
+                let button = document.querySelector('#button');
+                var li = document.createElement("li");
+                let p = document.querySelector('p');
+
+         input.addEventListener('keypress', function(event) {
+	    if (event.key == 'Enter') {
+        li.appendChild(document.createTextNode(input.value));
+        spisok.appendChild(li);
+	}else{
+       p.textContent = "Введите список дел";
+    }
+});
+         button.addEventListener('click', function(){    
+                delete li;
+              })
+              </script>
+
+    </script>
+</body>
+
+</html> 

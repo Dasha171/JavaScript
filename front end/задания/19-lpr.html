@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<h1>Здравствуйте!</h1>
+<input type="text" value="" id="text">
+<input type="text" value="" id="textt">
+<input type="text" value="" id="texttt">
+<button id="save">Получить</button>
+<div id="result"></div>
+
+<body>
+    <script>
+        //1 задание
+        //  let time = localStorage.getItem('time');
+
+        //  if (!time) {
+        //      let now = (new Date()).getTime();
+        //      localStorage.setItem('time', now);
+        //  }
+        //  console.log(localStorage);
+        //  let c = 0;
+
+        //  function restart() {
+        //      c++;
+        //      console.log(`Posetili sait: ${c}`);
+        //  }
+
+        //  window.onload = restart;
+        //  window.onbeforeunload = restart;
+        //  console.log(localStorage);
+
+        //2 задание
+        // var input = document.getElementById("text")[0].value;
+        // input.addEventListener('blur', function () {
+        //     var res = document.getElementById("result");
+        //     res.innerHTML = input;
+
+        //     localStorage.setItem("tex", input);
+        // })
+
+        // document.getElementById("result").innerHTML = localStorage.getItem("tex");
+
+        //3 задание
+        // let c = 0;
+
+        // function restart() {
+        //     c++;
+        //     console.log(`Posetili sait: ${c}`);
+        // }
+
+        // window.onload = restart;
+        // window.onbeforeunload = restart;
+        //console.log(localStorage);
+
+        //4 задание 
+        // localStorage.clear();
+        //     if (localStorage.getItem("exampleKey") === null) {
+        //         console.log("Хранилище очищено");
+        //     }
+        //     for (let i = 0; i < localStorage.length; i++) {
+        //         console.log(localStorage.key(i));
+        //     }
+
+        //5-6 задание
+        // let but = [];
+
+        // const save = document.getElementById("save");
+        // save.addEventListener("click", function () {
+        //     const inputElements = document.getElementsByTagName("input");
+        //     for (let i = 0; i < inputElements.length; i++) {
+        //         but.push(inputElements[i].value);
+        //     }
+        //     localStorage.setItem("but", JSON.stringify(but));
+        // console.log(localStorage);
+        //     console.log('Сохранено');
+        // });
+
+        //7 задание
+        // let users = [
+        //     {
+        //       surname: 'surname1',
+        //       name: 'name1',
+        //       age: 31,
+        //     },
+        //     {
+        //       surname: 'surname2',
+        //       name: 'name2',
+        //       age: 32,
+        //     },
+        //     {
+        //       surname: 'surname3',
+        //       name: 'name3',
+        //       age: 33,
+        //     },
+        //   ];
+        //   localStorage.setItem("users", JSON.stringify(users));
+
+
+        //   let but1 = document.getElementById("text");
+        //   let but2 = document.getElementById("textt");
+        //   let but3 = document.getElementById("texttt");
+        //   let button = document.getElementById("save");
+        //   button.addEventListener("click", function () {
+        //     let surname = but1.value;
+        //     let name = but2.value;
+        //     let age = but3.value;
+        //     let users = JSON.parse(localStorage.getItem("users"));
+        //     let newUser = {
+        //       surname: surname,
+        //       name: name,
+        //       age: age
+        //     };
+        //     users.push(newUser);
+        //     localStorage.setItem("users", JSON.stringify(users));
+        //console.log(localStorage);
+        //   });
+    </script>
+</body>
+
+</html>
